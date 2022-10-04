@@ -1,8 +1,16 @@
 package hw2;
 
-public class Cat extends Pets {
+public class Cat extends Animal {
 
-    public Cat(String name, String noise) {
-        super(name, noise);
+    public Cat(String name) {
+        super(name);
+    }
+    public Cat(){
+
+    }
+
+    public String noise(){
+        String catNoise= "meow";
+        return catNoise;
     }
 }

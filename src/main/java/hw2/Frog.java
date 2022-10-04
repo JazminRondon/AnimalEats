@@ -1,8 +1,15 @@
 package hw2;
 
-public class Frog extends Pets{
-    public Frog(String name, String noise) {
-        super(name, noise);
+public class Frog extends Animal{
+    public Frog(String name) {
+        super(name);
+    }
+    public Frog(){
+
+    }
+    public String noise(){
+        String frogNoise= "ribbit";
+        return frogNoise;
     }
 
 }

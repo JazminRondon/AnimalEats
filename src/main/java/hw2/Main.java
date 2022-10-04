@@ -1,30 +1,42 @@
 package hw2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("How many pets do you have?");
-        int numberAnimals = scanner.nextInt();
-        Pets[] pets = new Pets[numberAnimals];
-        int x = 0;
-        while (x <= numberAnimals) {
-            String name;
-            String noise;
-            Pets pet;
-            System.out.println("what kind of pet(s)?");
-            String blank = scanner.nextLine();
-            String typeOfPet = scanner.nextLine();
 
-            System.out.println("Whats their name?");
-            name = scanner.nextLine();
-            System.out.println("What do they sound like?");
-            noise = scanner.nextLine();
-            if (typeOfPet.equalsIgnoreCase("Dog")) {
-                pet = new Dog(name, noise);
+
+
+        System.out.println("How many pets do you have?");
+        Scanner scanner = new Scanner(System.in);
+        int numberOfPets = scanner.nextInt();
+
+        ArrayList<String> petType = new ArrayList<>();
+        ArrayList<String> petName = new ArrayList<>();
+        Scanner pet = new Scanner(System.in);
+
+        for (int i = 0; i < numberOfPets; i++) {
+            System.out.println("What kind of pet do you have? (Dog, Cat, Frog)");
+            petType.add(pet.nextLine());
+            System.out.println("What is its name?");
+            petName.add(pet.nextLine());
+        }
+        for (int i = 0; i < petName.size(); i++) {
+            if (petType.get(i).equalsIgnoreCase("Cat")) {
+                Cat cat = new Cat(petName.get(i));
+                System.out.println(cat.getName() + " says "+ cat.noise());
+                //              System.out.print(cat.noise());
+            } else if (petType.get(i).equalsIgnoreCase("Dog")) {
+                Animal dog = new Dog(petName.get(i));
+                System.out.println(dog.getName() + " says "+dog.noise() );
+            } else if (petType.get(i).equalsIgnoreCase("Frog")) {
+                Animal frog = new Frog(petName.get(i));
+                System.out.println(frog.getName() + " says " +frog.noise());
+            } else {
+                Animal unknown = new Animal(petName.get(i));
+                System.out.println(unknown.getName() + " says "+unknown.noise() );
             }
-            x++;
         }
     }
 }
